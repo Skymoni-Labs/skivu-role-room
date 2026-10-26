@@ -3,19 +3,31 @@
   "apiVersion": "1.0",
   "id": "org.skivu.role-room",
   "name": "角色房间",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "minHostVersion": "0.2.41",
   "author": "Skivu contributors",
   "description": "给角色一个可以回来的小房间：布置家具、陪伴互动、房间手记，并联动原聊天与随身模块。",
   "license": "GPL-3.0-only",
   "source": "https://github.com/skyjjgw/skivu-role-room",
   "entry": "index.html",
-  "permissions": ["storage", "files", "chat.read", "chat.write", "ai.generate", "chat.tools"],
+  "permissions": [
+    "storage",
+    "files",
+    "chat.read",
+    "chat.write",
+    "ai.generate",
+    "chat.tools"
+  ],
   "networkDomains": [],
   "contributes": {
     "launcher": true,
     "chatSurface": false,
-    "chatActions": [{"id": "open-room", "title": "去 TA 的房间"}],
+    "chatActions": [
+      {
+        "id": "open-room",
+        "title": "去 TA 的房间"
+      }
+    ],
     "roleCompanion": {
       "title": "TA 的房间",
       "entry": "companion.html",
@@ -24,7 +36,12 @@
           "id": "read_room",
           "effect": "read",
           "description": "读取当前角色当前存档范围的虚构房间、家具、活动与最近手记，返回revision。可与同一角色已启用的小手机等工具协作；不能读取其他插件数据或现实设备。",
-          "parameters": {"type": "object", "properties": {}, "required": [], "additionalProperties": false}
+          "parameters": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": false
+          }
         },
         {
           "id": "update_room",
@@ -33,12 +50,37 @@
           "parameters": {
             "type": "object",
             "properties": {
-              "activity": {"type": "string", "enum": ["sit", "read", "water", "listen", "rest", "tidy"]},
-              "note": {"type": "string", "maxLength": 400},
-              "expected_revision": {"type": "integer"},
-              "source": {"type": "string", "enum": ["conversation", "role_story"]}
+              "activity": {
+                "type": "string",
+                "enum": [
+                  "sit",
+                  "read",
+                  "water",
+                  "listen",
+                  "rest",
+                  "tidy"
+                ]
+              },
+              "note": {
+                "type": "string",
+                "maxLength": 400
+              },
+              "expected_revision": {
+                "type": "integer"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "conversation",
+                  "role_story"
+                ]
+              }
             },
-            "required": ["activity", "expected_revision", "source"],
+            "required": [
+              "activity",
+              "expected_revision",
+              "source"
+            ],
             "additionalProperties": false
           }
         }

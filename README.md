@@ -13,13 +13,13 @@
 - 原聊天草稿、角色随身模块设置与打开入口；与其他已绑定插件一起参与正常聊天。
 - 原子存档、版本冲突拒绝、角色/故事隔离、同次工具调用去重、取消后丢弃迟到回复、JSON备份导入导出。
 
-这是0.1.0预览版。真实账号、真实模型质量、模型自动选择多插件工具和实体机/OEM尚未验收。[完整验证范围](docs/verification.md)。
+这是0.1.1预览版。真实账号、真实模型质量、模型自动选择多插件工具和实体机/OEM尚未验收。[完整验证范围](docs/verification.md)。
 
 ## 安装与使用
 
 需要 **Skivu 0.2.41或更新版本**。
 
-1. 下载 [安装包](https://github.com/skyjjgw/skivu-role-room/releases/download/v0.1.0/role-room-0.1.0.skivu.json)，从插件市场的本地导入安装；或添加目录 `https://raw.githubusercontent.com/skyjjgw/skivu-role-room/main/catalog/apps.json`。
+1. 下载 [安装包](https://github.com/skyjjgw/skivu-role-room/releases/download/v0.1.1/role-room-0.1.1.skivu.json)，从插件市场的本地导入安装；或添加目录 `https://raw.githubusercontent.com/skyjjgw/skivu-role-room/main/catalog/apps.json`。
 2. 启用插件并授予声明权限。打开角色聊天 → 插件动作 → 角色的随身插件设置 → 启用「TA 的房间」。也可以从房间的「随身模块」入口完成绑定。
 3. 默认各故事独立；可在宿主设置改为同角色共用。切换不会合并或删除旧空间。
 4. 从「去 TA 的房间」进入。点击家具互动；「布置房间」修改名称、配色和位置，确认保存后才写入。

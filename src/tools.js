@@ -4,7 +4,7 @@ export async function invokeTool(store,tool,args={}) {
   if(!args||typeof args!=='object'||Array.isArray(args))throw new RoomError('INVALID_ARGUMENT','工具参数无效。');
   if(tool==='read_room'){
     if(Object.keys(args).length)throw new RoomError('INVALID_ARGUMENT','读取房间不接收额外参数。');
-    const state=store.state;return {success:true,fictional:true,revision:state.revision,summary:roomSummary(state),items:copy(state.items),recentDiary:state.diary.slice(-8),activities:Object.keys(activities)};
+    const state=store.state;return {success:true,fictional:true,revision:state.revision,summary:roomSummary(state),items:copy(state.items),recentDiary:state.diary.slice(-8).map(row=>({...row,text:row.text.slice(0,800),truncated:row.text.length>800})),totalDiaryCount:state.diary.length,diaryTextLimit:800,activities:Object.keys(activities)};
   }
   if(tool!=='update_room')throw new RoomError('INVALID_ARGUMENT','不支持这个房间工具。');
   if(Object.keys(args).some(k=>!['activity','note','expected_revision','source'].includes(k))||!Number.isSafeInteger(args.expected_revision)||args.expected_revision<0||!['conversation','role_story'].includes(args.source))throw new RoomError('INVALID_ARGUMENT','请先读取房间，并提供活动、来源和读取时的版本。');

@@ -14,6 +14,7 @@ export const activities = Object.freeze({
 });
 export class RoomError extends Error { constructor(code,message){super(message);this.code=code;} }
 export const copy=value=>JSON.parse(JSON.stringify(value));
+export const MAX_BACKUP_BYTES=2*1024*1024;
 export const own=(o,k)=>Object.prototype.hasOwnProperty.call(o,k);
 const object=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
 export function text(value,max,label,{empty=false}={}) {
@@ -67,7 +68,7 @@ export function move(state,id,dx,dy) {
   item.x=x;item.y=y;return state;
 }
 export function parseBackup(raw,context) {
-  if(typeof raw!=='string'||new TextEncoder().encode(raw).length>1024*1024)throw new RoomError('INVALID_BACKUP','备份超过1 MiB或格式不正确。');
+  if(typeof raw!=='string'||new TextEncoder().encode(raw).length>MAX_BACKUP_BYTES)throw new RoomError('INVALID_BACKUP','备份超过2 MiB或格式不正确。');
   let value;try{value=JSON.parse(raw);}catch{throw new RoomError('INVALID_BACKUP','文件不是有效的JSON备份。');}
   exact(value,['format','scope','roleId','state'],'备份');
   if(value.format!=='skivu-role-room/v1'||value.scope!==scope(context)||value.roleId!==context.roleId)throw new RoomError('WRONG_SCOPE','这份备份属于其他角色或故事，请回到原空间再导入。');

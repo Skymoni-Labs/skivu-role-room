@@ -8,7 +8,7 @@
         "apiVersion": "1.0",
         "id": "org.skivu.role-room",
         "name": "角色房间",
-        "version": "0.1.0",
+        "version": "0.1.1",
         "minHostVersion": "0.2.41",
         "author": "Skivu contributors",
         "description": "给角色一个可以回来的小房间：布置家具、陪伴互动、房间手记，并联动原聊天与随身模块。",
@@ -93,9 +93,9 @@
           }
         }
       },
-      "url": "https://github.com/skyjjgw/skivu-role-room/releases/download/v0.1.0/role-room-0.1.0.skivu.json",
-      "sha256": "f9bc5dd81806d6ef35d6ff75c8193c6fc125c357f1ab0a17f8015ad1f09a5d4b",
-      "bytes": 110335
+      "url": "https://github.com/skyjjgw/skivu-role-room/releases/download/v0.1.1/role-room-0.1.1.skivu.json",
+      "sha256": "411918dc6ee8daba209a797d6519703f321592b7015130dc4d46998722c228ce",
+      "bytes": 110995
     }
   ]
 }
