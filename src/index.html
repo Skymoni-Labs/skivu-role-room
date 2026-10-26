@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="light"><title>角色房间</title><link rel="stylesheet" href="style.css"></head>
+<body><div id="app">
+  <div id="preview-banner" hidden>本地交互预览 · 模拟宿主与模型，不连接真实账号</div>
+  <header class="topbar"><a class="brand" href="#" aria-label="角色房间首页"><span class="brand-mark">⌂</span><span>ROOM<span class="brand-dot">.</span><small>属于你们的小小日常</small></span></a><button id="modules" class="quiet">⌘ 随身模块</button></header>
+  <main><div class="page-heading"><div><div class="eyebrow">A LITTLE PLACE TO COME HOME TO</div><h1 id="room-title">TA 的小房间</h1><p id="scope-label">正在准备房间…</p></div><button id="decorate" class="outline" disabled>✧ 布置房间</button></div>
+  <div id="notice" role="status" hidden></div>
+  <div id="not-bound" class="empty-state" hidden><span>⌂</span><h2>先把房间交给一位角色</h2><p>在随身模块中启用「TA 的房间」，再从角色聊天打开。每个角色与故事都能有自己的房间。</p><button id="bind" class="primary">选择角色随身模块</button></div>
+  <div id="loading" class="loading">正在打开房门…</div>
+  <div id="content" hidden>
+    <div class="main-grid"><section class="room-card" aria-label="互动房间"><div class="room-top"><span class="pill"><i></i><span id="owner-label">TA 在房间里</span></span><button id="ambience" class="quiet small" aria-label="切换昼夜">☀ 白天</button></div><div id="scene"></div><div class="room-caption"><span id="activity">欢迎回来。</span><small>点击家具，发现一点小日常</small></div></section>
+    <aside class="companion-card"><div class="section-kicker">TOGETHER, HERE</div><h2>今天，想一起做什么？</h2><p class="soft">不赶时间。坐一会儿，也很好。</p><div id="actions" class="action-grid"></div><div class="divider"></div><div class="mini-heading"><h3>房间里的话</h3><span>当前角色模型</span></div><div id="conversation" aria-live="polite"></div><form id="talk-form"><label class="sr-only" for="talk">对 TA 说</label><textarea id="talk" maxlength="2000" placeholder="对 TA 说点什么…" rows="2"></textarea><div class="talk-footer"><small id="talk-status">回复通过宿主当前模型生成</small><button id="talk-send" type="submit" class="primary">发送 ↗</button><button id="cancel-ai" type="button" class="quiet" hidden>取消等待</button></div></form><button id="chat-draft" class="text-button">带着房间日常，回到聊天 ↗</button></aside></div>
+    <section class="journal-card"><div class="journal-heading"><div><div class="section-kicker">LITTLE MOMENTS</div><h2>房间手记<span id="diary-count"></span></h2></div><div><button id="capture-quote" class="quiet">收下 TA 的一句话</button><button id="new-note" class="outline">＋ 记一笔</button></div></div><div id="diary"></div><button id="all-notes" class="text-button">查看全部手记 →</button></section>
+    <section class="connections"><div><span class="connection-mark">↗</span><h3>让日常接着发生</h3><p>房间、原聊天与角色小手机，在同一位角色身边。</p></div><button id="connect-chat" class="connection-tile"><strong>原聊天 <span>↗</span></strong><small>带入可编辑的房间话题</small></button><button id="connect-modules" class="connection-tile"><strong>随身模块 <span>↗</span></strong><small>打开小手机及其他已绑定插件</small></button></section>
+    <footer><span>虚构角色生活 · 存档仅保存在本机插件空间</span><div><button id="export" class="quiet small">导出备份</button><button id="import" class="quiet small">导入备份</button><button id="refresh" class="quiet small">刷新</button></div></footer>
+  </div></main>
+  <dialog id="dialog"><div id="dialog-content"></div></dialog>
+</div><script src="/skivu-sdk.js"></script><script type="module" src="app.js"></script></body></html>

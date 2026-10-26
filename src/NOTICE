@@ -1,0 +1,5 @@
+Role Room original implementation and SVG artwork, 2026 Skivu contributors.
+License: GPL-3.0-only. Source: https://github.com/skyjjgw/skivu-role-room
+tools/build_web_plugin.py is adapted unchanged from the Skivu open-plugin builder (GPL-3.0-only).
+Preview SDK and automated fixtures are development-only and are not packaged.
+The room represents fictional role activity. It does not control real devices or access other plugins' private storage.

@@ -1,0 +1,33 @@
+name: Role room checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: node --check src/app.js && node --check src/companion.js
+      - run: python tools/build_web_plugin.py --check packages/role-room-0.1.0.skivu.json
+      - run: python tools/build_web_plugin.py src --output rebuilt.skivu.json
+      - run: cmp rebuilt.skivu.json packages/role-room-0.1.0.skivu.json
+      - run: python tools/check_release.py
+      - run: npx playwright-core install --with-deps chromium
+      - run: npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: room-browser-evidence
+          path: qa/browser/

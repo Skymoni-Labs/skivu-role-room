@@ -1,0 +1,5 @@
+node_modules/
+qa/
+*.log
+__pycache__/
+rebuilt.skivu.json
