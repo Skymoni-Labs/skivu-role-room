@@ -5,9 +5,13 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,7 +28,13 @@ jobs:
       - run: python tools/build_web_plugin.py src --output rebuilt.skivu.json
       - run: cmp rebuilt.skivu.json packages/role-room-0.1.1.skivu.json
       - run: python tools/check_release.py
-      - run: npx playwright-core install --with-deps chromium
+      - name: Select installed browser or install Chromium
+        run: |
+          if command -v google-chrome > /dev/null; then
+            printf 'ROOM_BROWSER_EXECUTABLE=%s\n' "$(command -v google-chrome)" >> "$GITHUB_ENV"
+          else
+            npx playwright-core install --with-deps chromium
+          fi
       - run: npm run test:browser
       - uses: actions/upload-artifact@v4
         if: always()
